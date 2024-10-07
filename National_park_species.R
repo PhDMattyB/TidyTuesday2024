@@ -81,14 +81,13 @@ mammal = n_park %>%
   scale_color_manual(values = col_pal)+
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.title = element_text(size = 14), 
+        axis.title.y = element_blank(), 
         axis.title.x = element_blank(), 
         axis.text = element_text(size = 12), 
         strip.background = element_rect(fill = 'white'), 
         strip.text = element_text(size = 12),
         panel.grid = element_blank(), 
-        plot.title = element_text(hjust = 0.5), 
-        legend.position = 'none')
+        plot.title = element_text(hjust = 0.5))
 
 
 
@@ -136,7 +135,7 @@ bird = n_park %>%
   scale_color_manual(values = col_pal)+
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.title = element_text(size = 14), 
+        axis.title.y = element_blank(), 
         axis.title.x = element_blank(), 
         axis.text = element_text(size = 12), 
         strip.background = element_rect(fill = 'white'), 
@@ -190,7 +189,7 @@ reptile = n_park %>%
   scale_color_manual(values = col_pal)+
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.title = element_text(size = 14), 
+        axis.title.y = element_blank(), 
         axis.title.x = element_blank(), 
         axis.text = element_text(size = 12), 
         strip.background = element_rect(fill = 'white'), 
@@ -246,7 +245,7 @@ amphibian = n_park %>%
   scale_color_manual(values = col_pal)+
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.title = element_text(size = 14), 
+        axis.title.y = element_blank(), 
         axis.title.x = element_blank(), 
         axis.text = element_text(size = 12), 
         strip.background = element_rect(fill = 'white'), 
@@ -300,7 +299,7 @@ fish = n_park %>%
   scale_color_manual(values = col_pal)+
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.title = element_text(size = 14), 
+        axis.title.y = element_blank(), 
         axis.title.x = element_blank(), 
         axis.text = element_text(size = 12), 
         strip.background = element_rect(fill = 'white'), 
