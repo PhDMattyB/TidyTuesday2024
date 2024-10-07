@@ -51,6 +51,28 @@ specnumber(clean_data$Observations,
 
 # mammals -----------------------------------------------------------------
 
+mammal_div = n_park %>% 
+  group_by(ParkCode, 
+           SciName, 
+           CategoryName) %>% 
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
+  filter(CategoryName == 'Mammal', 
+         TaxonRecordStatus == 'Active', 
+         RecordStatus == 'Approved', 
+         Occurrence == 'Present') %>%  
+  ungroup() %>% 
+  group_by(Family, 
+           ParkCode, 
+           Abundance) 
+
+diversity(mammal_div$Observations, 
+          index = 'shannon', 
+          groups = mammal_div$ParkCode)
+
 mammal = n_park %>% 
   group_by(ParkCode, 
            SciName, 
