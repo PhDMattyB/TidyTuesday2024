@@ -22,11 +22,22 @@ col_pal = c('#5f0f40',
             '#9a031e', 
             '#0f4c5c',
             '#fb8b24',
-            '#e36414')
+            '#e36414', 
+            '#ff006e')
 
 n_park %>% 
-  select(CategoryName) %>%
-  distinct()
+  select(ParkCode, 
+         CategoryName, 
+         Abundance) %>%
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
+  filter(ParkCode == 'BRCA') %>% 
+  filter(CategoryName == 'Fish')
+  # distinct() %>% 
+  View()
 
 # mammals -----------------------------------------------------------------
 
@@ -34,6 +45,11 @@ mammal = n_park %>%
   group_by(ParkCode, 
            SciName, 
            CategoryName) %>% 
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
   filter(CategoryName == 'Mammal', 
          TaxonRecordStatus == 'Active', 
          RecordStatus == 'Approved', 
@@ -51,11 +67,11 @@ mammal = n_park %>%
            ParkCode, 
            Abundance) %>% 
   na.omit() %>% 
-  filter(Abundance %in% c('Abundant', 
-                          'Common', 
-                          'Occasional', 
-                          'Rare', 
-                          'Uncommon')) %>% 
+  # filter(Abundance %in% c('Abundant', 
+  #                         'Common', 
+  #                         'Occasional', 
+  #                         'Rare', 
+  #                         'Uncommon')) %>% 
   ggplot(aes(x = Family, 
            y = Observations)) +
   geom_point(aes(col = Abundance), 
@@ -84,6 +100,11 @@ bird = n_park %>%
   group_by(ParkCode, 
            SciName, 
            CategoryName) %>%
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
   filter(CategoryName == 'Bird', 
          TaxonRecordStatus == 'Active', 
          RecordStatus == 'Approved', 
@@ -101,11 +122,11 @@ bird = n_park %>%
            ParkCode, 
            Abundance) %>% 
   na.omit() %>% 
-  filter(Abundance %in% c('Abundant', 
-                          'Common', 
-                          'Occasional', 
-                          'Rare', 
-                          'Uncommon')) %>% 
+  # filter(Abundance %in% c('Abundant', 
+  #                         'Common', 
+  #                         'Occasional', 
+  #                         'Rare', 
+  #                         'Uncommon')) %>% 
   ggplot(aes(x = Family, 
            y = Observations)) +
   geom_point(aes(col = Abundance), 
@@ -133,6 +154,11 @@ reptile = n_park %>%
   group_by(ParkCode, 
            SciName, 
            CategoryName) %>%
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
   filter(CategoryName == 'Reptile', 
          TaxonRecordStatus == 'Active', 
          RecordStatus == 'Approved', 
@@ -150,11 +176,11 @@ reptile = n_park %>%
            ParkCode, 
            Abundance) %>% 
   na.omit() %>% 
-  filter(Abundance %in% c('Abundant', 
-                          'Common', 
-                          'Occasional', 
-                          'Rare', 
-                          'Uncommon')) %>% 
+  # filter(Abundance %in% c('Abundant', 
+  #                         'Common', 
+  #                         'Occasional', 
+  #                         'Rare', 
+  #                         'Uncommon')) %>% 
   ggplot(aes(x = Family, 
              y = Observations)) +
   geom_point(aes(col = Abundance), 
@@ -184,6 +210,11 @@ amphibian = n_park %>%
   group_by(ParkCode, 
            SciName, 
            CategoryName) %>%
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
   filter(CategoryName == 'Amphibian', 
          TaxonRecordStatus == 'Active', 
          RecordStatus == 'Approved', 
@@ -201,11 +232,11 @@ amphibian = n_park %>%
            ParkCode, 
            Abundance) %>% 
   na.omit() %>% 
-  filter(Abundance %in% c('Abundant', 
-                          'Common', 
-                          'Occasional', 
-                          'Rare', 
-                          'Uncommon')) %>% 
+  # filter(Abundance %in% c('Abundant', 
+  #                         'Common', 
+  #                         'Occasional', 
+  #                         'Rare', 
+  #                         'Uncommon')) %>% 
   ggplot(aes(x = Family, 
              y = Observations)) +
   geom_point(aes(col = Abundance), 
@@ -233,6 +264,11 @@ fish = n_park %>%
   group_by(ParkCode, 
            SciName, 
            CategoryName) %>%
+  filter(CategoryName %in% c('Mammal', 
+                             'Bird', 
+                             'Reptile', 
+                             'Amphibian', 
+                             'Fish')) %>% 
   filter(CategoryName == 'Fish', 
          TaxonRecordStatus == 'Active', 
          RecordStatus == 'Approved', 
@@ -250,11 +286,11 @@ fish = n_park %>%
            ParkCode, 
            Abundance) %>% 
   na.omit() %>% 
-  filter(Abundance %in% c('Abundant', 
-                          'Common', 
-                          'Occasional', 
-                          'Rare', 
-                          'Uncommon')) %>% 
+  # filter(Abundance %in% c('Abundant', 
+  #                         'Common', 
+  #                         'Occasional', 
+  #                         'Rare', 
+  #                         'Uncommon')) %>% 
   ggplot(aes(x = Family, 
              y = Observations)) +
   geom_point(aes(col = Abundance), 
