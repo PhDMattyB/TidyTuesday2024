@@ -34,4 +34,13 @@ clean_mammal = n_park %>%
          -ParkTags, 
          -OzoneSensitiveStatus, 
          -GRank, 
-         -SRank) 
+         -SRank) %>% 
+  select(1:18)
+
+theme_set(theme_bw())
+
+ggplot(data = clean_mammal, 
+       aes(x = Family, 
+           y = Observations)) +
+  geom_point(aes(col = Family))+
+  facet_grid(~ParkCode)
