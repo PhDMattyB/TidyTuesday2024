@@ -10,6 +10,7 @@
 library(tidytuesdayR)
 library(tidyverse)
 library(patchwork)
+library(vegan)
 
 data = tidytuesdayR::tt_load(2024, 
                              week = 41)
@@ -25,19 +26,28 @@ col_pal = c('#5f0f40',
             '#e36414', 
             '#ff006e')
 
-n_park %>% 
+clean_data = n_park %>% 
   select(ParkCode, 
          CategoryName, 
-         Abundance) %>%
+         Abundance, 
+         Observations) %>%
   filter(CategoryName %in% c('Mammal', 
                              'Bird', 
                              'Reptile', 
                              'Amphibian', 
                              'Fish')) %>% 
-  filter(ParkCode == 'BRCA') %>% 
-  filter(CategoryName == 'Fish')
-  # distinct() %>% 
-  View()
+  na.omit()
+
+
+
+diversity(clean_data$Observations, 
+          index = 'shannon', 
+          groups = clean_data$ParkCode)
+
+specnumber(clean_data$Observations,
+           groups = clean_data$ParkCode, 
+           MARGIN = 1)
+
 
 # mammals -----------------------------------------------------------------
 
