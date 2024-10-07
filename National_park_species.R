@@ -39,10 +39,25 @@ clean_mammal = n_park %>%
 
 theme_set(theme_bw())
 
-ggplot(data = clean_mammal, 
-       aes(x = Family, 
+clean_mammal %>% 
+  group_by(Family, 
+           ParkCode, 
+           Abundance) %>% 
+  na.omit() %>% 
+  filter(Abundance %in% c('Abundant', 
+                          'Common', 
+                          'Occasional', 
+                          'Rare', 
+                          'Uncommon')) %>% 
+  ggplot(aes(x = Family, 
            y = Observations)) +
-  geom_point(aes(col = Family))+
+  geom_point(aes(col = Abundance))+
   facet_grid(~ParkCode)+
   theme(axis.text.x = element_text(angle = 90, 
-                                   size = 5))
+                                   size = 5), 
+        axis.title = element_text(size = 14), 
+        axis.title.x = element_blank(), 
+        axis.text = element_text(size = 12), 
+        strip.background = element_rect(fill = 'white'), 
+        strip.text = element_text(size = 12),
+        panel.grid = element_blank())
