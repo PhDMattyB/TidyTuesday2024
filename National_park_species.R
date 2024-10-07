@@ -43,4 +43,6 @@ ggplot(data = clean_mammal,
        aes(x = Family, 
            y = Observations)) +
   geom_point(aes(col = Family))+
-  facet_grid(~ParkCode)
+  facet_grid(~ParkCode)+
+  theme(axis.text.x = element_text(angle = 90, 
+                                   size = 5))
