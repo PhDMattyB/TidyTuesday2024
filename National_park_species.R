@@ -39,6 +39,12 @@ clean_mammal = n_park %>%
 
 theme_set(theme_bw())
 
+col_pal = c('#5f0f40', 
+            '#0f4c5c',
+            '#9a031e', 
+            '#fb8b24',
+            '#e36414')
+
 clean_mammal %>% 
   group_by(Family, 
            ParkCode, 
@@ -51,8 +57,10 @@ clean_mammal %>%
                           'Uncommon')) %>% 
   ggplot(aes(x = Family, 
            y = Observations)) +
-  geom_point(aes(col = Abundance))+
+  geom_point(aes(col = Abundance), 
+             size = 2)+
   facet_grid(~ParkCode)+
+  scale_color_manual(values = col_pal)+
   theme(axis.text.x = element_text(angle = 90, 
                                    size = 5), 
         axis.title = element_text(size = 14), 
@@ -61,3 +69,16 @@ clean_mammal %>%
         strip.background = element_rect(fill = 'white'), 
         strip.text = element_text(size = 12),
         panel.grid = element_blank())
+
+
+# clean_mammal %>% 
+#   group_by(Family, 
+#            ParkCode, 
+#            Abundance) %>% 
+#   na.omit() %>% 
+#   filter(Abundance %in% c('Abundant', 
+#                           'Common', 
+#                           'Occasional', 
+#                           'Rare', 
+#                           'Uncommon')) %>% 
+#   View()
