@@ -15,11 +15,6 @@ data = tidytuesdayR::tt_load(2024,
 
 n_park = data$most_visited_nps_species_data
 
-View(n_park)
-
-
-
-
 clean_mammal = n_park %>% 
   group_by(ParkCode, 
            SciName, 
